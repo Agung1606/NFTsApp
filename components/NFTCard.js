@@ -48,6 +48,7 @@ const NFTCard = ({ data }) => {
       <View
         style={{
           marginTop: SIZES.font,
+          marginBottom: SIZES.small / 2,
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
@@ -57,7 +58,7 @@ const NFTCard = ({ data }) => {
         <RectButton
           minWidth={120}
           fontSize={SIZES.font}
-          handlePress={() => navigation.navigate("Details", { data })}
+          handlePress={() => navigation.navigate("Details", { param: data })}
         />
       </View>
     </View>
