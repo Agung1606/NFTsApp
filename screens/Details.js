@@ -63,24 +63,33 @@ const Details = ({ route, navigation }) => {
       >
         <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
       </View>
-      {data.bids && (
-        <FlatList
-          data={data.bids}
-          renderItem={({ item }) => <DetailsBid bid={item} />}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: SIZES.extraLarge }}
-          ListHeaderComponent={() => (
-            <React.Fragment>
-              <DetailsHeader data={data} navigation={navigation} />
-              <SubInfo />
-              <View style={{ padding: SIZES.font }}>
-                <DetailsDesc data={data} />
-              </View>
-            </React.Fragment>
-          )}
-        />
-      )}
+      <FlatList
+        data={data.bids}
+        renderItem={({ item }) => <DetailsBid bid={item} />}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: SIZES.extraLarge * 3 }}
+        ListHeaderComponent={() => (
+          <React.Fragment>
+            <DetailsHeader data={data} navigation={navigation} />
+            <SubInfo />
+            <View style={{ padding: SIZES.font }}>
+              <DetailsDesc data={data} />
+              {data.bids.length > 0 && (
+                <Text
+                  style={{
+                    fontSize: SIZES.font,
+                    fontFamily: FONTS.semiBold,
+                    color: COLORS.primary
+                  }}
+                >
+                  Current Bid
+                </Text>
+              )}
+            </View>
+          </React.Fragment>
+        )}
+      />
     </SafeAreaView>
   );
 };
